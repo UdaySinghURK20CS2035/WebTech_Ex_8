@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+  
+  <script>
+        var app = angular.module("myapp", []);
+        app.controller("mycontrol", function($scope) {
+            
+            $scope.calculate = function() {
+                var v1 = parseFloat($scope.v1);
+                var v2 = parseFloat($scope.v2);
+                //var v3;
+
+                if($scope.op == '+') {
+                    return v1+v2;
+                }
+                else if($scope.op == '-') {
+                    return v1-v2;
+                }
+                else if($scope.op == '*') {
+                    return v1*v2;
+                }
+                else if($scope.op == '/') {
+                    return v1/v2;
+                }
+                else if($scope.op == '%'){
+                    return v1%v2;
+                }
+                
+                //$scope.output = v3;
+            }
+        })
+  </script>
+</head>
+
+<body>
+    <h1> Calculator </h1> <hr>
+    <div ng-app="myapp" ng-controller="mycontrol">
+        <label> Enter first value : </label>
+        <input type="text" ng-model="v1"> <br><br>
+
+        <label> Enter second value : </label>
+        <input type="text" ng-model="v2"> <br><br>
+        
+        <label for="operator"> Select an operation </label>
+        <select name="operator" id="op" ng-model="op">
+            <option value="" disabled selected hidden> Select operation </option>
+            <option value="+"> + </option>
+            <option value="-"> - </option>
+            <option value="*"> * </option>
+            <option value="/"> / </option>
+            <option value="%"> % </option>
+        </select>
+        <br><hr><br>
+        <!--button ng-click="calculate()"> Calculate </button-->
+        <br>
+        <label for="result"> Result: </label>
+        <!--input type="text" readonly ng-model="output"-->
+        <p>{{ calculate() }}</p>
+    </div>
+</body>
+</html>

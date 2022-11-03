@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+    <script>
+        var app = angular.module('toDoApp', []);
+        app.controller('toDoControl', function($scope) {
+            $scope.tasks = [];
+            $scope.add = function() {
+                $scope.tasks.push($scope.item);
+            }
+        })
+    </script>
+</head>
+<body>
+    <div ng-app="toDoApp" ng-controller="toDoControl">
+        <input type="text" ng-model="item" placeholder="Enter task">
+        <button ng-click="add()">  Add </button>
+        <ul>
+            <li ng-repeat="t in tasks "> {{t}} </li>
+        </ul>
+    </div>
+</body>
+</html>
